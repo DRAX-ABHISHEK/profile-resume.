@@ -1,0 +1,982 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- <link rel="stylesheet" href="style.css"> -->
+  <title>My Website</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@1,400;1,700&display=swap" rel="stylesheet">
+</head>
+
+
+
+
+
+
+
+
+
+
+<STYle>
+  * {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+html {
+	font-size: 10px;
+	font-family: 'Ubuntu', sans-serif;
+	scroll-behavior: smooth;
+}
+a {
+	text-decoration: none;
+}
+.container {
+	min-height: 100vh;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+img {
+	height: 100%;
+	width: 100%;
+	object-fit: cover;
+}
+p {
+	color: black;
+	font-size: 1.4rem;
+	margin-top: 5px;
+	line-height: 2.5rem;
+	font-weight: 300;
+	letter-spacing: 0.05rem;
+}
+.section-title {
+	font-size: 4rem;
+	font-weight: 300;
+	color: black;
+	margin-bottom: 10px;
+	text-transform: uppercase;
+	letter-spacing: 0.2rem;
+	text-align: center;
+}
+.section-title span {
+	color: crimson;
+}
+
+.cta {
+	display: inline-block;
+	padding: 10px 30px;
+	color: white;
+	background-color: transparent;
+	border: 2px solid crimson;
+	font-size: 2rem;
+	text-transform: uppercase;
+	letter-spacing: 0.1rem;
+	margin-top: 30px;
+	transition: 0.3s ease;
+	transition-property: background-color, color;
+}
+.cta:hover {
+	color: white;
+	background-color: crimson;
+}
+.brand h1 {
+	font-size: 3rem;
+	text-transform: uppercase;
+	color: white;
+}
+.brand h1 span {
+	color: crimson;
+}
+
+/* Header section */
+#header {
+	position: fixed;
+	z-index: 1000;
+	left: 0;
+	top: 0;
+	width: 100vw;
+	height: auto;
+}
+#header .header {
+	min-height: 8vh;
+	background-color: rgba(31, 30, 30, 0.24);
+	transition: 0.3s ease background-color;
+}
+#header .nav-bar {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+	height: 100%;
+	max-width: 1300px;
+	padding: 0 10px;
+}
+#header .nav-list ul {
+	list-style: none;
+	position: absolute;
+	background-color: rgb(31, 30, 30);
+	width: 100vw;
+	height: 100vh;
+	left: 100%;
+	top: 0;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	z-index: 1;
+	overflow-x: hidden;
+	transition: 0.5s ease left;
+}
+#header .nav-list ul.active {
+	left: 0%;
+}
+#header .nav-list ul a {
+	font-size: 2.5rem;
+	font-weight: 500;
+	letter-spacing: 0.2rem;
+	text-decoration: none;
+	color: white;
+	text-transform: uppercase;
+	padding: 20px;
+	display: block;
+}
+#header .nav-list ul a::after {
+	content: attr(data-after);
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%) scale(0);
+	color: rgba(240, 248, 255, 0.021);
+	font-size: 13rem;
+	letter-spacing: 50px;
+	z-index: -1;
+	transition: 0.3s ease letter-spacing;
+}
+#header .nav-list ul li:hover a::after {
+	transform: translate(-50%, -50%) scale(1);
+	letter-spacing: initial;
+}
+#header .nav-list ul li:hover a {
+	color: crimson;
+}
+#header .hamburger {
+	height: 60px;
+	width: 60px;
+	display: inline-block;
+	border: 3px solid white;
+	border-radius: 50%;
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: 100;
+	cursor: pointer;
+	transform: scale(0.8);
+	margin-right: 20px;
+}
+#header .hamburger:after {
+	position: absolute;
+	content: '';
+	height: 100%;
+	width: 100%;
+	border-radius: 50%;
+	border: 3px solid white;
+	animation: hamburger_puls 1s ease infinite;
+}
+#header .hamburger .bar {
+	height: 2px;
+	width: 30px;
+	position: relative;
+	background-color: white;
+	z-index: -1;
+}
+#header .hamburger .bar::after,
+#header .hamburger .bar::before {
+	content: '';
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	left: 0;
+	background-color: white;
+	transition: 0.3s ease;
+	transition-property: top, bottom;
+}
+#header .hamburger .bar::after {
+	top: 8px;
+}
+#header .hamburger .bar::before {
+	bottom: 8px;
+}
+#header .hamburger.active .bar::before {
+	bottom: 0;
+}
+#header .hamburger.active .bar::after {
+	top: 0;
+}
+/* End Header section */
+
+/* Hero Section */
+#hero {
+	background-image: url(https://st2.depositphotos.com/1854227/6468/i/950/depositphotos_64686275-stock-photo-mix-of-office-supplies-and.jpg);
+	background-size: cover;
+	background-position: top center;
+	position: relative;
+	z-index: 1;
+}
+#hero::after {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 0;
+	height: 100%;
+	width: 100%;
+	background-color: black;
+	opacity: 0.7;
+	z-index: -1;
+}
+#hero .hero {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 0 50px;
+	justify-content: flex-start;
+}
+#hero h1 {
+	display: block;
+	width: fit-content;
+	font-size: 4rem;
+	position: relative;
+	color: transparent;
+	animation: text_reveal 0.5s ease forwards;
+	animation-delay: 1s;
+}
+#hero h1:nth-child(1) {
+	animation-delay: 1s;
+}
+#hero h1:nth-child(2) {
+	animation-delay: 2s;
+}
+#hero h1:nth-child(3) {
+	animation: text_reveal_name 0.5s ease forwards;
+	animation-delay: 3s;
+}
+#hero h1 span {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 0;
+	background-color: crimson;
+	animation: text_reveal_box 1s ease;
+	animation-delay: 0.5s;
+}
+#hero h1:nth-child(1) span {
+	animation-delay: 0.5s;
+}
+#hero h1:nth-child(2) span {
+	animation-delay: 1.5s;
+}
+#hero h1:nth-child(3) span {
+	animation-delay: 2.5s;
+}
+
+/* End Hero Section */
+
+/* Services Section */
+#services .services {
+	flex-direction: column;
+	text-align: center;
+	max-width: 1500px;
+	margin: 0 auto;
+	padding: 100px 0;
+}
+#services .service-top {
+	max-width: 500px;
+	margin: 0 auto;
+}
+#services .service-bottom {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap;
+	margin-top: 50px;
+}
+#services .service-item {
+	flex-basis: 80%;
+	display: flex;
+	align-items: flex-start;
+	justify-content: center;
+	flex-direction: column;
+	padding: 30px;
+	border-radius: 10px;
+	background-image: url(https://www.libertypuzzles.com/userfiles/media/images/10510/the-best-sea-view-back-1200.jpg );
+	background-size: cover;
+	margin: 10px 5%;
+	position: relative;
+	z-index: 1;
+	overflow: hidden;
+}
+#services .service-item::after {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 0;
+	height: 100%;
+	width: 100%;
+	background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);
+	opacity: 0.9;
+	z-index: -1;
+}
+#services .service-bottom .icon {
+	height: 80px;
+	width: 80px;
+	margin-bottom: 20px;
+}
+#services .service-item h2 {
+	font-size: 2rem;
+	color: white;
+	margin-bottom: 10px;
+	text-transform: uppercase;
+}
+#services .service-item p {
+	color: white;
+	text-align: left;
+}
+/* End Services Section */
+
+/* Projects section */
+#projects .projects {
+	flex-direction: column;
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 100px 0;
+}
+#projects .projects-header h1 {
+	margin-bottom: 50px;
+}
+#projects .all-projects {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+}
+#projects .project-item {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	width: 80%;
+	margin: 20px auto;
+	overflow: hidden;
+	border-radius: 10px;
+}
+#projects .project-info {
+	padding: 30px;
+	flex-basis: 50%;
+	height: 100%;
+	display: flex;
+	align-items: flex-start;
+	justify-content: center;
+	flex-direction: column;
+	background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);
+	color: white;
+}
+#projects .project-info h1 {
+	font-size: 4rem;
+	font-weight: 500;
+}
+#projects .project-info h2 {
+	font-size: 1.8rem;
+	font-weight: 500;
+	margin-top: 10px;
+}
+#projects .project-info p {
+	color: white;
+}
+#projects .project-img {
+	flex-basis: 50%;
+	height: 300px;
+	overflow: hidden;
+	position: relative;
+}
+#projects .project-img:after {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 0;
+	height: 100%;
+	width: 100%;
+	background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);
+	opacity: 0.7;
+}
+#projects .project-img img {
+	transition: 0.3s ease transform;
+}
+#projects .project-item:hover .project-img img {
+	transform: scale(1.1);
+}
+/* End Projects section */
+
+/* About Section */
+#about .about {
+	flex-direction: column-reverse;
+	text-align: center;
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 100px 20px;
+}
+#about .col-left {
+	width: 250px;
+	height: 360px;
+}
+#about .col-right {
+	width: 100%;
+}
+#about .col-right h2 {
+	font-size: 1.8rem;
+	font-weight: 500;
+	letter-spacing: 0.2rem;
+	margin-bottom: 10px;
+}
+#about .col-right p {
+	margin-bottom: 20px;
+}
+#about .col-right .cta {
+	color: black;
+	margin-bottom: 50px;
+	padding: 10px 20px;
+	font-size: 2rem;
+}
+#about .col-left .about-img {
+	height: 100%;
+	width: 100%;
+	position: relative;
+	border: 10px solid white;
+}
+#about .col-left .about-img::after {
+	content: '';
+	position: absolute;
+	left: -33px;
+	top: 19px;
+	height: 98%;
+	width: 98%;
+	border: 7px solid crimson;
+	z-index: -1;
+}
+/* End About Section */
+
+/* contact Section */
+#contact .contact {
+	flex-direction: column;
+	max-width: 1200px;
+	margin: 0 auto;
+	width: 90%;
+}
+#contact .contact-items {
+	/* max-width: 400px; */
+	width: 100%;
+}
+#contact .contact-item {
+	width: 80%;
+	padding: 20px;
+	text-align: center;
+	border-radius: 10px;
+	padding: 30px;
+	margin: 30px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	box-shadow: 0px 0px 18px 0 #0000002c;
+	transition: 0.3s ease box-shadow;
+}
+#contact .contact-item:hover {
+	box-shadow: 0px 0px 5px 0 #0000002c;
+}
+#contact .icon {
+	width: 70px;
+	margin: 0 auto;
+	margin-bottom: 10px;
+}
+#contact .contact-info h1 {
+	font-size: 2.5rem;
+	font-weight: 500;
+	margin-bottom: 5px;
+}
+#contact .contact-info h2 {
+	font-size: 1.3rem;
+	line-height: 2rem;
+	font-weight: 500;
+}
+/*End contact Section */
+
+/* Footer */
+#footer {
+	background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);
+}
+#footer .footer {
+	min-height: 200px;
+	flex-direction: column;
+	padding-top: 50px;
+	padding-bottom: 10px;
+}
+#footer h2 {
+	color: white;
+	font-weight: 500;
+	font-size: 1.8rem;
+	letter-spacing: 0.1rem;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+#footer .social-icon {
+	display: flex;
+	margin-bottom: 30px;
+}
+#footer .social-item {
+	height: 50px;
+	width: 50px;
+	margin: 0 5px;
+}
+#footer .social-item img {
+	filter: grayscale(1);
+	transition: 0.3s ease filter;
+}
+#footer .social-item:hover img {
+	filter: grayscale(0);
+}
+#footer p {
+	color: white;
+	font-size: 1.3rem;
+}
+/* End Footer */
+
+/* Keyframes */
+@keyframes hamburger_puls {
+	0% {
+		opacity: 1;
+		transform: scale(1);
+	}
+	100% {
+		opacity: 0;
+		transform: scale(1.4);
+	}
+}
+@keyframes text_reveal_box {
+	50% {
+		width: 100%;
+		left: 0;
+	}
+	100% {
+		width: 0;
+		left: 100%;
+	}
+}
+@keyframes text_reveal {
+	100% {
+		color: white;
+	}
+}
+@keyframes text_reveal_name {
+	100% {
+		color: crimson;
+		font-weight: 500;
+	}
+}
+/* End Keyframes */
+
+/* Media Query For Tablet */
+@media only screen and (min-width: 768px) {
+	.cta {
+		font-size: 2.5rem;
+		padding: 20px 60px;
+	}
+	h1.section-title {
+		font-size: 6rem;
+	}
+
+	/* Hero */
+	#hero h1 {
+		font-size: 7rem;
+	}
+	/* End Hero */
+
+	/* Services Section */
+	#services .service-bottom .service-item {
+		flex-basis: 45%;
+		margin: 2.5%;
+	}
+	/* End Services Section */
+
+	/* Project */
+	#projects .project-item {
+		flex-direction: row;
+	}
+	#projects .project-item:nth-child(even) {
+		flex-direction: row-reverse;
+	}
+	#projects .project-item {
+		height: 400px;
+		margin: 0;
+		width: 100%;
+		border-radius: 0;
+	}
+	#projects .all-projects .project-info {
+		height: 100%;
+	}
+	#projects .all-projects .project-img {
+		height: 100%;
+	}
+	/* End Project */
+
+	/* About */
+	#about .about {
+		flex-direction: row;
+	}
+	#about .col-left {
+		width: 600px;
+		height: 400px;
+		padding-left: 60px;
+	}
+	#about .about .col-left .about-img::after {
+		left: -45px;
+		top: 34px;
+		height: 98%;
+		width: 98%;
+		border: 10px solid crimson;
+	}
+	#about .col-right {
+		text-align: left;
+		padding: 30px;
+	}
+	#about .col-right h1 {
+		text-align: left;
+	}
+	/* End About */
+
+	/* contact  */
+	#contact .contact {
+		flex-direction: column;
+		padding: 100px 0;
+		align-items: center;
+		justify-content: center;
+		min-width: 20vh;
+	}
+	#contact .contact-items {
+		width: 100%;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-evenly;
+		margin: 0;
+	}
+	#contact .contact-item {
+		width: 30%;
+		margin: 0;
+		flex-direction: row;
+	}
+	#contact .contact-item .icon {
+		height: 100px;
+		width: 100px;
+	}
+	#contact .contact-item .icon img {
+		object-fit: contain;
+	}
+	#contact .contact-item .contact-info {
+		width: 100%;
+		text-align: left;
+		padding-left: 20px;
+	}
+	/* End contact  */
+}
+/* End Media Query For Tablet */
+
+/* Media Query For Desktop */
+@media only screen and (min-width: 1200px) {
+	/* header */
+	#header .hamburger {
+		display: none;
+	}
+	#header .nav-list ul {
+		position: initial;
+		display: block;
+		height: auto;
+		width: fit-content;
+		background-color: transparent;
+	}
+	#header .nav-list ul li {
+		display: inline-block;
+	}
+	#header .nav-list ul li a {
+		font-size: 1.8rem;
+	}
+	#header .nav-list ul a:after {
+		display: none;
+	}
+	/* End header */
+
+	#services .service-bottom .service-item {
+		flex-basis: 22%;
+		margin: 1.5%;
+	}
+}
+/* End  Media Query For Desktop */
+</STYle>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<body>
+  <!-- Header -->
+  <section id="header">
+    <div class="header container">
+      <div class="nav-bar">
+        <div class="brand">
+          <a href="#hero">
+            <h1><span>A</span>bhishek  <span>K</span>umar</h1>
+          </a>
+        </div>
+        <div class="nav-list">
+          <div class="hamburger">
+            <div class="bar"></div>
+          </div>
+          <ul>
+            <li><a href="#hero" data-after="Home">Home</a></li>
+            <li><a href="#services" data-after="Service">Skills</a></li>
+            <li><a href="#projects" data-after="Projects">Projects</a></li>
+            <li><a href="#about" data-after="About">About</a></li>
+            <li><a href="#contact" data-after="Contact">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End Header -->
+
+
+  <!-- Hero Section  -->
+  <section id="hero">
+    <div class="hero container">
+      <div>
+        <h1>Hello, <span></span></h1>
+        <h1>My Name is <span></span></h1>
+        <h1>Abhishek <span></span></h1>
+        <a href="#projects" type="button" class="cta">Portfolio</a>
+      </div>
+    </div>
+  </section>
+  <!-- End Hero Section  -->
+
+  <!-- Service Section -->
+  <section id="services">
+    <div class="services container">
+      <div class="service-top">
+        <h1 class="section-title">s<span>K</span>lls</h1>
+        <p>With my knowledge and understanding of the latest technologies and trends in the industry, I can provide you with insights and suggestions to help you stay ahead of the game.
+           i am interested in IT, web development, programming. I can provide you with valuable resources and insights to help you achieve your goals.
+      </div>
+      <div class="service-bottom">
+        <div class="service-item">
+          <div class="icon"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBm9zGG4yPOXpOTC-aq4HeHCbfHWe33BfPOmsq6XG0D1EeB8SjbglsZrJ3hoxh93RmlMQ&usqp=CAU" /></div>
+          <h2>language</h2>
+          <p>i am very good at at c++ ,and also do programming and web development in c++
+			as,i am also good at c but it is very lenthy language so i prefer c++ than c
+			 </p>
+        </div>
+        <div class="service-item">
+          <div class="icon"><img src="https://i.pinimg.com/originals/ee/f5/ad/eef5addc3bf3c9a386ddf4d352c60272.jpg" /></div>
+          <h2>web development</h2>
+          <p>i am a frontend developer but still learning and learnt html,css,javascript, learning react and hoping to be fullstack developer in coming days.i have a pasion to become a full stack developer</p>
+        </div>
+        <div class="service-item">
+          <div class="icon"><img src="https://esyncalliance.org/wp-content/uploads/2020/05/DSA.png" /></div>
+          <h2>data structure</h2>
+          <p>i have completed the basic of data structure and algorithm that should be required,are array, string, pointers, stac, queue,linked list,trees.</p>
+        </div>
+        <div class="service-item">
+          <div class="icon"><img src="https://leetcode.com/static/images/LeetCode_Sharing.png" /></div>
+          <h2>problem solving</h2>
+          <p>i have acheived 5-star on haker-rank in problem solving and solved 150+ questions on leetcode in proplem solvingand my strength are array and string ,i mosly like to use brute force. </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+
+  <!-- Projects Section -->
+  <section id="projects">
+    <div class="projects container">
+      <div class="projects-header">
+        <h1 class="section-title"><span>Projects</span></h1>
+      </div>
+      <div class="all-projects">
+        <div class="project-item">
+          <div class="project-info">
+            <h1>Project 1</h1>
+            <h2>Coding is Love</h2>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ad, iusto cupiditate voluptatum impedit unde
+              rem ipsa distinctio illum quae mollitia ut, accusantium eius odio ducimus illo neque atque libero non sunt
+              harum? Ipsum repellat animi, fugit architecto voluptatum odit et!</p>
+          </div>
+          <div class="project-img">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfdY2S5Hsq7YwmDoC8_r6DdlAQeZGFP4y5_yO6qyhJa_ILhz75rezLIbBj88szmGd4Or8&usqp=CAU" alt="img">
+          </div>
+        </div>
+        <div class="project-item">
+          <div class="project-info">
+            <h1>Project 2</h1>
+            <h2>Coding is Love</h2>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ad, iusto cupiditate voluptatum impedit unde
+              rem ipsa distinctio illum quae mollitia ut, accusantium eius odio ducimus illo neque atque libero non sunt
+              harum? Ipsum repellat animi, fugit architecto voluptatum odit et!</p>
+          </div>
+          <div class="project-img">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsY6kL5L26K3y1C05lAFwvAUdyYZzANmAFzr-bOuENvUkyr_79aph_GAZGAFME2Nl3jRs&usqp=CAU" alt="img">
+          </div>
+        </div>
+        <div class="project-item">
+          <div class="project-info">
+            <h1>Project 3</h1>
+            <h2>Coding is Love</h2>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ad, iusto cupiditate voluptatum impedit unde
+              rem ipsa distinctio illum quae mollitia ut, accusantium eius odio ducimus illo neque atque libero non sunt
+              harum? Ipsum repellat animi, fugit architecto voluptatum odit et!</p>
+          </div>
+          <div class="project-img">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEtLMtzVxzjfBf8KhtsuoZQIPEWEAoIharaZrnMe5pCehc8TPcNoY-e31WZ_at1M3J1rk&usqp=CAU" alt="img">
+          </div>
+        </div>
+        <div class="project-item">
+          <div class="project-info">
+            <h1>Project 4</h1>
+            <h2>Coding is Love</h2>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ad, iusto cupiditate voluptatum impedit unde
+              rem ipsa distinctio illum quae mollitia ut, accusantium eius odio ducimus illo neque atque libero non sunt
+              harum? Ipsum repellat animi, fugit architecto voluptatum odit et!</p>
+          </div>
+          <div class="project-img">
+            <img src="https://i.ytimg.com/vi/LUSa3yRTB9A/maxresdefault.jpg" alt="img">
+          </div>
+        </div>
+        <div class="project-item">
+          <div class="project-info">
+            <h1>Project 5</h1>
+            <h2>Coding is Love</h2>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ad, iusto cupiditate voluptatum impedit unde
+              rem ipsa distinctio illum quae mollitia ut, accusantium eius odio ducimus illo neque atque libero non sunt
+              harum? Ipsum repellat animi, fugit architecto voluptatum odit et!</p>
+          </div>
+          <div class="project-img">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6JWHiZGClnTAG6DvjI-BA4H77W32frEaIa4hn8y1tlBYppO8W_7zOZgTScQkbzt4-nHA&usqp=CAU" alt="img">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End Projects Section -->
+
+  <!-- About Section -->
+  <section id="about">
+    <div class="about container">
+      <div class="col-left">
+        <div class="about-img">
+          <img src="https://media.licdn.com/dms/image/D5603AQHW81-pG6a7Iw/profile-displayphoto-shrink_400_400/0/1672405379226?e=1684972800&v=beta&t=q9wHrgJRSIzPUmZwoWDhTaHrsoomnBEP52CkBbdYaTo" alt="img">
+        </div>
+      </div>
+      <div class="col-right">
+        <h1 class="section-title">About <span>me</span></h1>
+        <h2>Front End Developer</h2>
+        <p>I am Abhishek Kumar currently studying in the 4th semester of ELECTRONICS AND COMMUNICATION ENGINEERING at NIT Silchar. I am passionate about coding and am keen to learn new skills and languages through projects and internships </p>
+        <a href="#" class="cta">Download Resume</a>
+      </div>
+    </div>
+  </section>
+  <!-- End About Section -->
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <div class="contact container">
+      <div>
+        <h1 class="section-title">Contact <span>info</span></h1>
+      </div>
+      <div class="contact-items">
+        <div class="contact-item">
+          <div class="icon"><img src="https://img.icons8.com/bubbles/100/000000/phone.png" /></div>
+          <div class="contact-info">
+            <h1>Phone</h1>
+            <h2>+91 7370004668</h2>
+            
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="icon"><img src="https://img.icons8.com/bubbles/100/000000/new-post.png" /></div>
+          <div class="contact-info">
+            <h1>Email</h1>
+            <h2>draxdraxabhishek@gmail.com</h2>
+            <h2>abhishek21_ug@ece.nits.ac.in</h2>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="icon"><img src="https://img.icons8.com/bubbles/100/000000/map-marker.png" /></div>
+          <div class="contact-info">
+            <h1>Address</h1>
+            <h2>vishnupur,begusarai,bihar</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End Contact Section -->
+
+  <!-- Footer -->
+  <section id="footer">
+    <div class="footer container">
+      <div class="brand">
+        <h1><span>D</span>RAX <span>A</span>BHISHEK</h1>
+      </div>
+      <h2>Your's Truly loved ones</h2>
+      <div class="social-icon">
+        <div class="social-item">
+          <a href="#"><img src="data:image/png;base64,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" /></a>
+        </div>
+        <div class="social-item">
+          <a href="#"><img src="https://i.pinimg.com/originals/c2/81/8c/c2818c6d5d111f61846fbc878bc51b5e.png" /></a>
+        </div>
+        <div class="social-item">
+          <a href="#"><img src="data:image/png;base64,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" /></a>
+        </div>
+        <div class="social-item">
+          <a href="#"><img src="data:image/png;base64,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" /></a>
+        </div>
+      </div>
+      <p>Copyright © 2025 Abhishek kumar. All rights reserved</p>
+    </div>
+  </section>
+  <!-- End Footer -->
+  <script src="./app.js"></script>
+</body>
+
+</html>
